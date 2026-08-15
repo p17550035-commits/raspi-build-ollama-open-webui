@@ -2,7 +2,7 @@
 layout: default
 title: Documentation Home
 ---
-{% toc %}
+
 
 # Raspi Build — Ollama + Open WebUI (Pi Edition) 🚀
 
