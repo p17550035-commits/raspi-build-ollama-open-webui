@@ -2,6 +2,7 @@
 layout: default
 title: Tarballs
 ---
+{% toc %}
 
 # Tarball System 📦  
 This page explains how the Pi Edition tarball works, how to extract it, where everything goes, and how the patched environment enables Open WebUI to run on Raspberry Pi without Node, npm, or frontend builds.
@@ -181,3 +182,5 @@ The Pi Edition tarball is the **heart** of the Raspberry Pi AI stack:
 Just extract → activate → run.
 
 Your Raspberry Pi becomes a **real AI workstation**, offline and fully yours.
+
+{% include footer.html %}
