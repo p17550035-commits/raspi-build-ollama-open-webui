@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Raspi Build — Home</title>
+
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/custom.css">
+</head>
+
+<body>
+  <header>
+    <h1>Raspi Build — Ollama + Open WebUI (Pi Edition)</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="INSTALLERS.html">Installers</a></li>
+        <li><a href="MODELS.html">Models</a></li>
+        <li><a href="MODEL-COMPATIBILITY.html">Model Compatibility</a></li>
+        <li><a href="SYSTEMS.html">Systems</a></li>
+        <li><a href="ARCHITECTURE.html">Architecture</a></li>
+        <li><a href="TARBALLS.html">Tarballs</a></li>
+        <li><a href="ROADMAP.html">Roadmap</a></li>
+        <li><a href="README.html">Readme</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Raspi Build — Ollama + Open WebUI (Pi Edition)</h1>
+
+    <p>This documentation site provides the complete reference for the Raspberry Pi AI stack known as the Pi Edition. It explains the installers, tarball system, architecture, services, models, update workflow, and long-term expansion plan.</p>
+
+    <p>The Pi Edition is designed to be stable, offline, modular, and fully driven by tarballs instead of package managers. Everything installs onto an external drive for reliability and performance.</p>
+
+    <hr>
+
+    <h2>Project Overview</h2>
+
+    <p>The Pi Edition provides a complete AI environment for Raspberry Pi. It includes:</p>
+
+    <ul>
+      <li>Open WebUI extracted from Docker and packaged as a tarball</li>
+      <li>Ollama for running GGUF models locally</li>
+      <li>A modular installer system</li>
+      <li>External-drive-safe deployment</li>
+      <li>Enterprise architecture support</li>
+      <li>A manual update system</li>
+      <li>A model installer framework</li>
+      <li>A future enterprise service stack</li>
+    </ul>
+
+    <hr>
+
+    <h2>Where to Start</h2>
+
+    <p>The following pages contain the full documentation:</p>
+
+    <ul>
+      <li>README.html — General overview</li>
+      <li>INSTALLERS.html — All installer scripts</li>
+      <li>ARCHITECTURE.html — Enterprise system design</li>
+      <li>TARBALLS.html — Tarball workflow and release structure</li>
+      <li>MODELS.html — Model installer documentation</li>
+      <li>MODEL-COMPATIBILITY.html — Supported GGUF models</li>
+      <li>SYSTEMS.html — Enterprise services</li>
+      <li>ROADMAP.html — Future additions</li>
+    </ul>
+
+    <hr>
+
+    <h2>Deployment Method</h2>
+
+    <p>The Pi Edition installs directly onto an external drive. The installers handle:</p>
+
+    <ul>
+      <li>Drive detection</li>
+      <li>Mounting</li>
+      <li>Folder creation</li>
+      <li>Tarball download</li>
+      <li>SHA256 verification</li>
+      <li>Extraction</li>
+      <li>Service setup (future)</li>
+    </ul>
+
+    <p>All components live under:</p>
+
+    <pre>/mnt/pidrive/stack/</pre>
+
+    <hr>
+
+    <h2>Folder Structure</h2>
+
+    <p>The following folders exist now or will exist once enterprise mode is added:</p>
+
+    <pre>
+openwebui/
+logs/
+backups/
+models/
+postgres/
+redis/
+qdrant/
+minio/
+gitea/
+docker-compose.yml
+    </pre>
+
+    <hr>
+
+    <h2>Tarball System</h2>
+
+    <p>The Pi Edition uses tarballs instead of package managers to avoid dependency issues and ensure predictable installations. Tarballs contain prebuilt components that extract directly into the stack directory.</p>
+
+    <p>The current UI/backend tarball uses the following SHA256 checksum:</p>
+
+    <pre>a5b0574c14bc6645c9a040fc955a1d27ab47181f6532cf802f1f880aa5fde197</pre>
+
+    <hr>
+
+    <h2>Update Philosophy</h2>
+
+    <p>Updates are manual and user-controlled. Nothing is forced or automatic. When new tarballs are released, users download them and run the appropriate installer. This prevents unexpected changes and keeps the system stable.</p>
+
+    <hr>
+
+    <h2>Roadmap Summary</h2>
+
+    <p>After hardware arrives, the following components will be added:</p>
+
+    <ul>
+      <li>Enterprise tarball</li>
+      <li>Model tarball suite</li>
+      <li>System service tarball</li>
+      <li>Upgrade tarballs</li>
+      <li>Enterprise installer</li>
+      <li>Model installer</li>
+      <li>Update installer</li>
+    </ul>
+
+    <hr>
+  </main>
+
+  <footer>
+    Full Raspberry Pi AI Stack — Enterprise Documentation
+  </footer>
+</body>
+</html>
