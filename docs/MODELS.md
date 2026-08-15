@@ -2,6 +2,7 @@
 layout: default
 title: Models
 ---
+{% toc %}
 
 # Model Installers 🧠  
 This page covers everything related to models on the Raspberry Pi AI stack, including Ollama models, Open WebUI backend GGUF models, Pi‑safe model recommendations, and installer scripts.
@@ -161,3 +162,5 @@ All model installers are listed here:
 Your Raspberry Pi can run **real LLMs** locally — Phi‑3, Qwen, LLaMA, Mistral — all offline, all free, all yours.
 
 This page gives you everything you need to install, manage, and understand model behavior on the Pi.
+
+{% include footer.html %}
