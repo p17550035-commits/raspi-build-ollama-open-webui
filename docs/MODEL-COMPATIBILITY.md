@@ -2,7 +2,7 @@
 layout: default
 title: Model Compatibility
 ---
-{% toc %}
+
 
 # Model Compatibility 📊  
 A complete reference for all Pi‑safe models across Ollama and Open WebUI backend (GGUF).  
