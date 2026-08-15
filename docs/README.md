@@ -1,25 +1,31 @@
-# Raspi Build — Ollama + Open WebUI (Pi Edition)
+---
+layout: default
+title: Documentation Home
+---
 
-A complete, modular, Raspberry Pi–optimized AI stack featuring:
+# Raspi Build — Ollama + Open WebUI (Pi Edition) 🚀
 
-- **Ollama** (ARM‑compatible local LLM runtime)  
-- **Open WebUI — Pi Edition** (prebuilt frontend + Python backend)  
-- **Qwen Coder / LLaMA / Phi / Mistral models**  
-- **Full installer suite** (core, components, models)  
-- **Enterprise‑grade stack options**  
-- **External‑drive‑aware deployments**  
-- **Zero‑build setup** — extract and run  
+A fully offline, enterprise‑grade AI stack designed specifically for Raspberry Pi 4/5. This project gives you a complete, modular, production‑ready environment featuring:
 
-This repository provides a **clean, reproducible, Pi‑safe AI environment** that avoids Node builds, frontend compilation, GPU dependencies, or cloud services.
+- **Open WebUI — Pi Edition** (prebuilt frontend + Python backend)
+- **Ollama** (ARM‑optimized local LLM runtime)
+- **Qwen / LLaMA / Phi / Mistral model support**
+- **Full installer suite** (core, components, models, upgrades)
+- **Enterprise stack** (Postgres, Redis, Qdrant, MinIO, Gitea)
+- **Docker Compose orchestration**
+- **Tarball system**
+- **Architecture diagrams**
+- **Backup automation**
+- Fully offline, fully yours.
 
-Everything runs **locally** on a Raspberry Pi 4 or 5.
+This README is your front‑door overview. Full documentation lives in `/docs/` and is served via GitHub Pages.
 
 ---
 
-## 🚀 What This Project Provides
+## 🌟 What This Project Provides
 
 ### ✔️ Prebuilt Open WebUI — Raspberry Pi Edition
-A fully working, Pi‑optimized distribution of Open WebUI:
+A complete Pi‑optimized distribution of Open WebUI:
 
 - Prebuilt production frontend (extracted from Docker)
 - Python backend + virtual environment
@@ -27,19 +33,33 @@ A fully working, Pi‑optimized distribution of Open WebUI:
 - Patched environment for Pi stability
 - Ollama integration ready out‑of‑the‑box
 - Qwen Coder support included
+- Zero Node, zero npm, zero compilation
 
 ### ✔️ Full Installer Suite
 Located in `/scripts/`:
 
 - Core installers  
 - Component installers  
-- Model installers (Ollama + OpenWebUI backend)  
+- Model installers (Ollama + GGUF)  
 - Upgrade installers  
 - Enterprise installers  
 - Self‑update + cleanup  
 - Universal uninstall  
 
 Every installer is modular, Pi‑safe, and external‑drive‑aware.
+
+### ✔️ Enterprise Stack (Optional)
+Includes:
+
+- PostgreSQL  
+- Redis  
+- Qdrant  
+- MinIO  
+- Gitea  
+- Open WebUI  
+- Ollama  
+
+All orchestrated via Docker Compose.
 
 ### ✔️ Tarball System
 Located in `/tarballs/`:
@@ -49,16 +69,15 @@ Located in `/tarballs/`:
 
 ---
 
-## 📦 Contents of the Pi Edition Tarball
+## 📦 Pi Edition Tarball Contents
 
 Inside `openwebui-pi-edition.tar.gz`:
 
 ```
 open-webui/
-│
-├── backend/      # Python backend + virtual environment
-├── build/        # Prebuilt production frontend
-└── patched/      # ARM-safe dependency patches
+  backend/      # Python backend + venv
+  build/        # Prebuilt production frontend
+  patched/      # ARM-safe dependency patches
 ```
 
 No Node.  
@@ -121,7 +140,7 @@ http://localhost:11434
 
 ---
 
-## 🧠 Model Integration (OpenWebUI Backend)
+## 🧩 Model Integration (OpenWebUI Backend GGUF)
 
 Place GGUF models into:
 
@@ -129,18 +148,18 @@ Place GGUF models into:
 /mnt/pidrive/stack/openwebui/models/
 ```
 
-Or inside:
+Or:
 
 ```
 ~/open-webui/models/
 ```
 
-Supported Pi‑safe GGUF models include:
+Supported Pi‑safe GGUF models:
 
-- Phi‑3 Mini  
-- Gemma 2 2B  
-- Mistral 7B (GGUF)  
-- LLaMA 3 8B (GGUF)  
+- Phi‑3 Mini GGUF  
+- Gemma 2 2B GGUF  
+- Mistral 7B GGUF  
+- LLaMA 3 8B GGUF  
 
 Full compatibility table is in the documentation.
 
@@ -156,12 +175,11 @@ docs/INSTALLERS.md
 
 ---
 
-## 🧩 Documentation
+## 📚 Documentation
 
 Full documentation is available at:
 
-👉 **GitHub Pages Site**  
-(Served from `/docs/`)
+👉 **GitHub Pages Site** (served from `/docs/`)
 
 Includes:
 
@@ -193,3 +211,4 @@ Includes:
 - Phi — Microsoft  
 
 This Pi Edition was built to make running local AI **simple, fast, and frustration‑free**.
+
