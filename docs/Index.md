@@ -3,7 +3,9 @@ layout: default
 title: Raspi Build — Home
 ---
 
-# Raspi Build — Ollama + OpenWebUI  
-Welcome to the documentation hub for the Raspberry Pi AI stack installer suite.
+# Raspi Build — Ollama + Open WebUI (Pi Edition)
 
-Use the navigation links to explore installers, models, architecture, and more.
+Welcome!  
+This site contains the full documentation suite for your Raspberry Pi AI stack.
+
+👉 Start here: [Documentation Homepage](README.md)
