@@ -3,7 +3,7 @@ layout: default
 title: Raspi Build — Home
 ---
 
-{% toc %}
+
 
 # Raspi Build — Ollama + Open WebUI (Pi Edition)
 
