@@ -13,9 +13,15 @@
     <h1>{{ site.title }}</h1>
     <nav>
       <ul>
-        {% for page in site.header_pages %}
-          <li><a href="{{ page | relative_url }}">{{ page }}</a></li>
-        {% endfor %}
+        <li><a href="{{ 'index.html' | relative_url }}">Home</a></li>
+        <li><a href="{{ 'INSTALLERS.html' | relative_url }}">Installers</a></li>
+        <li><a href="{{ 'MODELS.html' | relative_url }}">Models</a></li>
+        <li><a href="{{ 'MODEL-COMPATIBILITY.html' | relative_url }}">Model Compatibility</a></li>
+        <li><a href="{{ 'SYSTEMS.html' | relative_url }}">Systems</a></li>
+        <li><a href="{{ 'ARCHITECTURE.html' | relative_url }}">Architecture</a></li>
+        <li><a href="{{ 'TARBALLS.html' | relative_url }}">Tarballs</a></li>
+        <li><a href="{{ 'ROADMAP.html' | relative_url }}">Roadmap</a></li>
+        <li><a href="{{ 'README.html' | relative_url }}">Readme</a></li>
       </ul>
     </nav>
   </header>
