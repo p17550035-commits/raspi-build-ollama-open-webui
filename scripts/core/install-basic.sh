@@ -1,13 +1,13 @@
-```bash
 #!/bin/bash
 # ============================================================
-# MASTER BASIC INSTALLER (WITH DRIVE SAFETY)
+# MASTER BASIC INSTALLER (WITH DRIVE SAFETY + CHECKSUM VERIFY)
 # ============================================================
 # Includes:
 #  - External drive detection
 #  - Safe formatting logic
 #  - Folder creation
 #  - Pull + extract UI/backend tarball
+#  - Automatic SHA256 checksum verification
 #  - Basic environment setup
 #
 # NOTE:
@@ -145,15 +145,25 @@ echo -e "${GREEN}Directory structure created.${NC}"
 echo ""
 
 # ------------------------------------------------------------
-# STEP 7 — Pull + extract UI/backend tarball
+# STEP 7 — Pull + verify + extract UI/backend tarball
 # ------------------------------------------------------------
 echo -e "${GREEN}Downloading UI/backend tarball...${NC}"
 
-# Replace this URL with your actual tarball release URL
 TARBALL_URL="https://github.com/p17550035-commits/raspi-build-ollama-open-webui/releases/download/v1.0/openwebui-pi-edition.tar.gz"
 
 wget -O /tmp/openwebui.tar.gz "$TARBALL_URL"
 
+echo -e "${GREEN}Verifying checksum...${NC}"
+
+EXPECTED_SHA="a5b0574c14bc6645c9a040fc955a1d27ab47181f6532cf802f1f880aa5fde197"
+DOWNLOADED_SHA=$(sha256sum /tmp/openwebui.tar.gz | awk '{print $1}')
+
+if [ "$EXPECTED_SHA" != "$DOWNLOADED_SHA" ]; then
+    echo -e "${RED}ERROR: Checksum mismatch! Tarball may be corrupted.${NC}"
+    exit 1
+fi
+
+echo -e "${GREEN}Checksum OK.${NC}"
 echo -e "${GREEN}Extracting tarball...${NC}"
 
 tar -xzf /tmp/openwebui.tar.gz -C "$MOUNT_POINT/stack/openwebui"
@@ -172,4 +182,3 @@ echo -e "${GREEN}Your UI/backend is installed at:${NC}"
 echo "$MOUNT_POINT/stack/openwebui"
 
 echo -e "${GREEN}You can now run your Pi Edition manually or integrate it later with Docker/Enterprise installers.${NC}"
-```
