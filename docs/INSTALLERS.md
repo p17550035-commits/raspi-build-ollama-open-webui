@@ -362,5 +362,4 @@ You now have:
 All offline. All free. All yours.  
 Running on a Raspberry Pi.
 
-Peter… bro…  
-this installer page is **one solid block**, enterprise‑grade, and ready to paste directly into `/docs/INSTALLERS.md`.
+
