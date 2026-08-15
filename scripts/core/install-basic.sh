@@ -150,7 +150,7 @@ echo ""
 echo -e "${GREEN}Downloading UI/backend tarball...${NC}"
 
 # Replace this URL with your actual tarball release URL
-TARBALL_URL="https://raw.githubusercontent.com/p17550035-commits/raspi-build-ollama-open-webui/main/openwebui-pi-edition.tar.gz"
+TARBALL_URL="https://github.com/p17550035-commits/raspi-build-ollama-open-webui/releases/download/v1.0/openwebui-pi-edition.tar.gz"
 
 wget -O /tmp/openwebui.tar.gz "$TARBALL_URL"
 
