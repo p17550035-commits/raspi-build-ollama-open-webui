@@ -1,4 +1,22 @@
-title: Raspi Build — Ollama + OpenWebUI
-description: Raspberry Pi 4/5 AI Stack Installer Suite
+title: Raspi Build — Ollama + Open WebUI (Pi Edition)
+description: Full Raspberry Pi AI Stack — Enterprise Documentation
 theme: minima
 markdown: kramdown
+
+# Enable table of contents (sidebar)
+kramdown:
+  toc_levels: 1..4
+
+# Navigation links (top bar)
+header_pages:
+  - README.md
+  - INSTALLERS.md
+  - MODELS.md
+  - MODEL-COMPATIBILITY.md
+  - SYSTEMS.md
+  - ARCHITECTURE.md
+  - TARBALLS.md
+
+# Plugins (GitHub Pages supports these)
+plugins:
+  - jekyll-toc
