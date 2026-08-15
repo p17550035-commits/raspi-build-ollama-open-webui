@@ -189,35 +189,51 @@ Postgres: localhost:5432
 # 7. ARCHITECTURE DIAGRAM (TEXT-BASED)
 ============================================================
 
-                ┌──────────────────────────┐
-                │        Raspberry Pi       │
-                │   (Enterprise AI Cloud)   │
-                └─────────────┬────────────┘
-                              │
-        ┌─────────────────────┴─────────────────────┐
-        │                                           │
-   ┌────▼────┐                                 ┌────▼────┐
-   │ Postgres│  ← Main DB (history, logs)       │  Redis  │ ← Cache, queues
-   └────▲────┘                                 └────▲────┘
-        │                                           │
-        │                                           │
-   ┌────▼────────────────────────────────────────────▼────┐
-   │                      Open WebUI                      │
-   │   (Agents, Tools, Workflows, Memory, UI, API)        │
-   └────▲────────────────────────────────────────────▲────┘
-        │                                           │
-        │                                           │
-   ┌────▼────┐                                 ┌────▼────┐
-   │ Qdrant  │ ← Vector DB (embeddings)         │ MinIO   │ ← File storage
-   └────▲────┘                                 └────▲────┘
-        │                                           │
-        └─────────────────────┬─────────────────────┘
-                              │
-                        ┌─────▼─────┐
-                        │   Gitea    │ ← Local GitHub
-                        └────────────┘
+                ```text
+                         ┌───────────────────────────────┐
+                         │         Raspberry Pi           │
+                         │     (Enterprise AI Cloud)      │
+                         └───────────────┬───────────────┘
+                                         │
+                                         │
+             ┌───────────────────────────┴───────────────────────────┐
+             │                                                       │
+      ┌──────▼──────┐                                        ┌──────▼──────┐
+      │  Postgres    │  ← Main DB (history, logs, metadata)   │    Redis     │  ← Cache, queues
+      └──────▲──────┘                                        └──────▲──────┘
+             │                                                       │
+             │                                                       │
+             └───────────────────────┬───────────────────────────────┘
+                                     │
+                          ┌──────────▼──────────┐
+                          │     Open WebUI       │
+                          │ Agents • Tools •     │
+                          │ Workflows • Memory   │
+                          │ UI • API • Auth      │
+                          └──────────▲──────────┘
+                                     │
+                                     │
+             ┌───────────────────────┴───────────────────────────────┐
+             │                                                       │
+      ┌──────▼──────┐                                        ┌──────▼──────┐
+      │   Qdrant     │  ← Vector DB (embeddings, semantic     │    MinIO     │  ← File storage (S3)
+      │              │     memory, document search)           │              │
+      └──────▲──────┘                                        └──────▲──────┘
+             │                                                       │
+             └───────────────────────┬───────────────────────────────┘
+                                     │
+                          ┌──────────▼──────────┐
+                          │        Gitea         │  ← Local GitHub (repos, tools, agents)
+                          └──────────▲──────────┘
+                                     │
+                                     │
+                          ┌──────────▼──────────┐
+                          │       GitHub         │  ← Remote repo (optional)
+                          └──────────────────────┘
 
-Ollama runs on host and connects directly to Open WebUI.
+Ollama runs on the host and connects directly to Open WebUI.
+```
+
 
 ============================================================
 # 8. FIRST-THINGS-TO-TEST CHECKLIST
