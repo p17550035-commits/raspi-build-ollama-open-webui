@@ -2,7 +2,7 @@
 layout: default
 title: Tarballs
 ---
-{% toc %}
+
 
 # Tarball System 📦  
 This page explains how the Pi Edition tarball works, how to extract it, where everything goes, and how the patched environment enables Open WebUI to run on Raspberry Pi without Node, npm, or frontend builds.
