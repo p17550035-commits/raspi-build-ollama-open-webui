@@ -1,0 +1,51 @@
+/* Hacker theme base */
+body {
+  margin: 0;
+  padding: 0;
+  background: #0a0a0a;
+  color: #e0e0e0;
+  font-family: "Courier New", Courier, monospace;
+}
+
+a {
+  color: #00ff9c;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+header {
+  padding: 20px;
+  background: #111;
+  border-bottom: 1px solid #00ff9c;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 28px;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0 0 0;
+  display: flex;
+  gap: 20px;
+}
+
+nav ul li {
+  display: inline-block;
+}
+
+main {
+  padding: 20px;
+}
+
+footer {
+  margin-top: 40px;
+  padding: 20px;
+  border-top: 1px solid #00ff9c;
+  background: #111;
+}
