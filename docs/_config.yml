@@ -1,22 +1,38 @@
-title: Raspi Build — Ollama + Open WebUI (Pi Edition)
-description: Full Raspberry Pi AI Stack — Enterprise Documentation
-theme: minima
+title: "Raspi Build — Ollama + Open WebUI (Pi Edition)"
+description: "Full Raspberry Pi AI Stack — Enterprise Documentation"
+theme: jekyll-theme-hacker
+
 markdown: kramdown
+highlighter: rouge
 
 # Enable table of contents (sidebar)
 kramdown:
   toc_levels: 1..4
 
-# Navigation links (top bar)
+# GitHub Pages metadata
+github:
+  is_project_page: true
+  repository_url: https://github.com/p17550035-commits/raspi-build-ollama-open-webui
+
+# Navigation (top tabs)
 header_pages:
-  - README.md
+  - index.md
   - INSTALLERS.md
   - MODELS.md
   - MODEL-COMPATIBILITY.md
   - SYSTEMS.md
   - ARCHITECTURE.md
   - TARBALLS.md
+  - ROADMAP.md
+  - README.md
 
-# Plugins (GitHub Pages supports these)
+# Plugins supported by GitHub Pages
 plugins:
   - jekyll-toc
+
+# Custom CSS for neon glow
+sass:
+  style: compressed
+
+include:
+  - assets
