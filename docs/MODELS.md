@@ -2,7 +2,7 @@
 layout: default
 title: Models
 ---
-{% toc %}
+
 
 # Model Installers 🧠  
 This page covers everything related to models on the Raspberry Pi AI stack, including Ollama models, Open WebUI backend GGUF models, Pi‑safe model recommendations, and installer scripts.
