@@ -1,0 +1,196 @@
+```bash
+#!/bin/bash
+# ============================================================
+# MASTER UPGRADE INSTALLER — DOCKER STACK (WITH DRIVE SAFETY)
+# ============================================================
+# This installer:
+#   - Uses the drive‑safe skeleton
+#   - Prepares external drive safely
+#   - Creates full enterprise folder structure
+#   - Installs Docker + Docker Compose
+#   - Pulls your future docker-compose.yml (placeholder for now)
+#   - Prepares the system for your upcoming Docker tarball
+#
+# NOTE:
+#   This version DOES NOT install Ollama.
+#   This version DOES NOT install Qwen.
+#   This version DOES NOT install UI/backend tarball.
+#
+#   It ONLY prepares the Pi + external drive + Docker stack
+#   so you can drop in your future Docker tarball later.
+# ============================================================
+
+RED="\033[1;31m"
+YELLOW="\033[1;33m"
+GREEN="\033[1;32m"
+NC="\033[0m"
+
+echo -e "${YELLOW}"
+echo "============================================================"
+echo "     MASTER UPGRADE INSTALLER — DOCKER STACK (SAFE MODE)"
+echo "============================================================"
+echo -e "${NC}"
+
+# ------------------------------------------------------------
+# STEP 1 — Detect external drive automatically
+# ------------------------------------------------------------
+echo -e "${GREEN}Detecting external drives...${NC}"
+
+DRIVES=$(lsblk -o NAME,TYPE | grep "disk" | awk '{print $1}' | grep "sd")
+
+if [ -z "$DRIVES" ]; then
+    echo -e "${RED}ERROR: No external drives detected.${NC}"
+    exit 1
+fi
+
+echo "Detected drive(s):"
+echo "$DRIVES"
+echo ""
+
+if [ $(echo "$DRIVES" | wc -l) -gt 1 ]; then
+    echo -e "${YELLOW}Multiple drives detected.${NC}"
+    echo "Enter the drive to use (example: sda):"
+    read -r DRIVE
+else
+    DRIVE="$DRIVES"
+fi
+
+TARGET="/dev/$DRIVE"
+
+echo -e "${GREEN}Selected drive: $TARGET${NC}"
+echo ""
+
+# ------------------------------------------------------------
+# STEP 2 — Check if drive is mounted
+# ------------------------------------------------------------
+MOUNTED=$(lsblk -o NAME,MOUNTPOINT | grep "$DRIVE" | awk '{print $2}' | grep "/")
+
+if [ -n "$MOUNTED" ]; then
+    echo -e "${YELLOW}Drive already mounted at: $MOUNTED${NC}"
+    MOUNT_POINT="$MOUNTED"
+else
+    MOUNT_POINT="/mnt/pidrive"
+    echo -e "${GREEN}Will mount drive at: $MOUNT_POINT${NC}"
+fi
+
+# ------------------------------------------------------------
+# STEP 3 — Detect filesystem type
+# ------------------------------------------------------------
+FS_TYPE=$(blkid "$TARGET" | awk -F 'TYPE="' '{print $2}' | awk -F '"' '{print $1}')
+
+if [ -z "$FS_TYPE" ]; then
+    FS_TYPE="UNFORMATTED"
+fi
+
+echo -e "${GREEN}Filesystem detected: $FS_TYPE${NC}"
+echo ""
+
+# ------------------------------------------------------------
+# STEP 4 — If not ext4, warn user
+# ------------------------------------------------------------
+if [ "$FS_TYPE" != "ext4" ]; then
+    echo -e "${RED}============================================================"
+    echo "WARNING: Drive is NOT ext4."
+    echo "Formatting will ERASE ALL DATA on $TARGET."
+    echo "============================================================${NC}"
+    echo ""
+    echo "Choose:"
+    echo "  1) Format drive (DESTROYS ALL DATA)"
+    echo "  2) Skip formatting"
+    echo "  3) Abort"
+    read -r CHOICE
+
+    case "$CHOICE" in
+        1)
+            echo -e "${RED}Type FORMAT to confirm:${NC}"
+            read -r CONFIRM
+            if [ "$CONFIRM" != "FORMAT" ]; then
+                echo -e "${RED}Format aborted.${NC}"
+                exit 1
+            fi
+            sudo mkfs.ext4 "$TARGET"
+            ;;
+        2)
+            echo -e "${YELLOW}Skipping formatting.${NC}"
+            ;;
+        3)
+            echo -e "${RED}Aborted.${NC}"
+            exit 1
+            ;;
+        *)
+            echo -e "${RED}Invalid choice.${NC}"
+            exit 1
+            ;;
+    esac
+fi
+
+# ------------------------------------------------------------
+# STEP 5 — Mount drive if needed
+# ------------------------------------------------------------
+if [ -z "$MOUNTED" ]; then
+    sudo mkdir -p "$MOUNT_POINT"
+    sudo mount "$TARGET" "$MOUNT_POINT"
+    echo "$TARGET $MOUNT_POINT ext4 defaults 0 0" | sudo tee -a /etc/fstab
+fi
+
+echo -e "${GREEN}Drive mounted at: $MOUNT_POINT${NC}"
+echo ""
+
+# ------------------------------------------------------------
+# STEP 6 — Create full enterprise folder structure
+# ------------------------------------------------------------
+echo -e "${GREEN}Creating enterprise stack directories...${NC}"
+
+mkdir -p "$MOUNT_POINT/stack/postgres"
+mkdir -p "$MOUNT_POINT/stack/redis"
+mkdir -p "$MOUNT_POINT/stack/qdrant"
+mkdir -p "$MOUNT_POINT/stack/minio"
+mkdir -p "$MOUNT_POINT/stack/gitea"
+mkdir -p "$MOUNT_POINT/stack/openwebui"
+mkdir -p "$MOUNT_POINT/stack/backups"
+mkdir -p "$MOUNT_POINT/stack/logs"
+
+echo -e "${GREEN}Directory structure created.${NC}"
+echo ""
+
+# ------------------------------------------------------------
+# STEP 7 — Install Docker + Docker Compose
+# ------------------------------------------------------------
+echo -e "${GREEN}Installing Docker...${NC}"
+
+curl -fsSL https://get.docker.com | sh
+
+sudo systemctl enable docker
+sudo systemctl start docker
+
+echo -e "${GREEN}Docker installed.${NC}"
+echo ""
+
+echo -e "${GREEN}Installing Docker Compose...${NC}"
+
+sudo apt-get install -y docker-compose-plugin
+
+echo -e "${GREEN}Docker Compose installed.${NC}"
+echo ""
+
+# ------------------------------------------------------------
+# STEP 8 — Placeholder for future docker-compose.yml
+# ------------------------------------------------------------
+echo -e "${YELLOW}============================================================"
+echo "Docker environment prepared."
+echo "============================================================${NC}"
+
+echo -e "${GREEN}This installer is ready for your future Docker tarball."
+echo "When you create your docker-compose.yml tarball later,"
+echo "you will add the download + extract logic here.${NC}"
+
+# ------------------------------------------------------------
+# STEP 9 — Final message
+# ------------------------------------------------------------
+echo -e "${YELLOW}============================================================"
+echo " DOCKER UPGRADE INSTALLER COMPLETE"
+echo "============================================================${NC}"
+
+echo -e "${GREEN}Your Docker environment is ready at:${NC}"
+echo "$MOUNT_POINT/stack/"
+```
