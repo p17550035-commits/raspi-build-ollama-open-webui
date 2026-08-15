@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>{{ page.title }}</title>
+
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}">
+</head>
+
+<body>
+  <header>
+    <h1>{{ site.title }}</h1>
+    <nav>
+      <ul>
+        {% for page in site.header_pages %}
+          <li><a href="{{ page | relative_url }}">{{ page }}</a></li>
+        {% endfor %}
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    {{ content }}
+  </main>
+
+  <footer>
+    {{ site.description }}
+  </footer>
+</body>
+</html>
