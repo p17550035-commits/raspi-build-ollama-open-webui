@@ -2,6 +2,7 @@
 layout: default
 title: Architecture
 ---
+{% toc %}
 
 # Enterprise Architecture 🏢  
 This page explains the full Raspberry Pi AI cloud architecture, including drive layout, service structure, data flow, backup strategy, and the final enterprise result.
@@ -206,3 +207,6 @@ You now have a full enterprise‑grade AI cloud on a Raspberry Pi:
 - Model backend (Ollama)  
 
 All offline. All free. All yours.
+
+{% include footer.html %}
+
