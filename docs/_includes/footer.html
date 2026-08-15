@@ -1,0 +1,9 @@
+<div class="footer-nav">
+  {% if page.previous %}
+    <a href="{{ page.previous.url }}">⬅ Previous: {{ page.previous.title }}</a>
+  {% endif %}
+
+  {% if page.next %}
+    <a href="{{ page.next.url }}">Next: {{ page.next.title }} ➡</a>
+  {% endif %}
+</div>
