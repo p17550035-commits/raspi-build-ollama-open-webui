@@ -2,6 +2,7 @@
 layout: default
 title: Model Compatibility
 ---
+{% toc %}
 
 # Model Compatibility 📊  
 A complete reference for all Pi‑safe models across Ollama and Open WebUI backend (GGUF).  
@@ -137,3 +138,5 @@ See full index:
 
 Your Raspberry Pi can run **real LLMs** locally — Phi‑3, Qwen, LLaMA, Mistral — all offline, all free, all yours.  
 This compatibility page ensures you always pick the right model for speed, stability, and memory usage.
+
+{% include footer.html %}
