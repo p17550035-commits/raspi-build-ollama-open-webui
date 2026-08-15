@@ -2,6 +2,7 @@
 layout: default
 title: Installers
 ---
+{% toc %}
 
 # Installer Suite 📦  
 A complete, enterprise‑grade installation guide for the entire Raspberry Pi AI stack.  
@@ -362,4 +363,4 @@ You now have:
 All offline. All free. All yours.  
 Running on a Raspberry Pi.
 
-
+{% include footer.html %}
