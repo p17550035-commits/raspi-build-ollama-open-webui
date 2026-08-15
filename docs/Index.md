@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Raspi Build — Home
+title: home
 ---
 
 
