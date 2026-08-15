@@ -2,7 +2,7 @@
 layout: default
 title: Architecture
 ---
-{% toc %}
+
 
 # Enterprise Architecture 🏢  
 This page explains the full Raspberry Pi AI cloud architecture, including drive layout, service structure, data flow, backup strategy, and the final enterprise result.
