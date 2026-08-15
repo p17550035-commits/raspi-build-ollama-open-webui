@@ -7,70 +7,104 @@ title: Raspi Build — Home
 
 # Raspi Build — Ollama + Open WebUI (Pi Edition)
 
-This site contains the complete documentation for the Raspberry Pi AI stack known as the Pi Edition. It explains the installers, tarball system, architecture, models, services, and update workflow.
+This documentation site provides the complete reference for the Raspberry Pi AI stack known as the Pi Edition. It explains the installers, tarball system, architecture, services, models, update workflow, and long-term expansion plan.
 
-## Purpose of the Project
+The Pi Edition is designed to be stable, offline, modular, and fully driven by tarballs instead of package managers. Everything installs onto an external drive for reliability and performance.
 
-The Pi Edition provides a stable, offline, modular AI environment for Raspberry Pi. It uses tarball-based deployment instead of package managers to avoid dependency issues and ensure predictable installations. Everything is designed to run from an external drive for performance and reliability.
+---
 
-## What the Pi Edition Includes
+## Project Overview
 
-1. Open WebUI (UI and backend extracted from Docker)
-2. Ollama (model runtime for GGUF models)
-3. Tarball-based installers
-4. External-drive-safe deployment
-5. Enterprise architecture support
-6. Manual update system
-7. Model installer framework
-8. Future enterprise service stack
+The Pi Edition provides a complete AI environment for Raspberry Pi. It includes:
 
-## Recommended Starting Points
+- Open WebUI extracted from Docker and packaged as a tarball  
+- Ollama for running GGUF models locally  
+- A modular installer system  
+- External-drive-safe deployment  
+- Enterprise architecture support  
+- A manual update system  
+- A model installer framework  
+- A future enterprise service stack  
 
-- README.md — Overview  
-- INSTALLERS.md — Installer documentation  
+This documentation explains how each part works and how the system expands over time.
+
+---
+
+## Where to Start
+
+The following pages contain the full documentation:
+
+- README.md — General overview  
+- INSTALLERS.md — All installer scripts  
 - ARCHITECTURE.md — Enterprise system design  
-- TARBALLS.md — Tarball workflow  
-- MODELS.md — Model installer system  
-- MODEL-COMPATIBILITY.md — Supported models  
+- TARBALLS.md — Tarball workflow and release structure  
+- MODELS.md — Model installer documentation  
+- MODEL-COMPATIBILITY.md — Supported GGUF models  
 - SYSTEMS.md — Enterprise services  
-- ROADMAP.md — Future plans  
+- ROADMAP.md — Future additions  
+
+---
 
 ## Deployment Method
 
-The system installs directly onto an external drive under:
+The Pi Edition installs directly onto an external drive. The installers handle:
+
+- Drive detection  
+- Mounting  
+- Folder creation  
+- Tarball download  
+- SHA256 verification  
+- Extraction  
+- Service setup (future)  
+
+All components live under:
 
 /mnt/pidrive/stack/
 
-This folder contains the UI, logs, backups, and future enterprise services. Tarballs are extracted directly into this structure. Installers handle drive detection, mounting, folder creation, checksum verification, and extraction.
+This structure keeps the system organized and easy to maintain.
+
+---
 
 ## Folder Structure
+
+The following folders exist now or will exist once enterprise mode is added:
 
 openwebui/  
 logs/  
 backups/  
-models/ (future)  
-postgres/ (future)  
-redis/ (future)  
-qdrant/ (future)  
-minio/ (future)  
-gitea/ (future)  
-docker-compose.yml (future)
+models/  
+postgres/  
+redis/  
+qdrant/  
+minio/  
+gitea/  
+docker-compose.yml  
 
-## Tarball Integrity
+This layout supports UI, models, databases, vector memory, storage, and local Git hosting.
 
-All installers verify downloads using SHA256. The current UI/backend tarball uses:
+---
+
+## Tarball System
+
+The Pi Edition uses tarballs instead of package managers to avoid dependency issues and ensure predictable installations. Tarballs contain prebuilt components that extract directly into the stack directory.
+
+The current UI/backend tarball uses the following SHA256 checksum:
 
 a5b0574c14bc6645c9a040fc955a1d27ab47181f6532cf802f1f880aa5fde197
 
-Checksum verification ensures the tarball is valid before extraction.
+Installers verify this automatically before extraction.
+
+---
 
 ## Update Philosophy
 
-Updates are manual. Nothing is forced or automatic. Users choose when to update by downloading new tarballs and running the appropriate installer. This prevents unexpected changes and keeps the system stable.
+Updates are manual and user-controlled. Nothing is forced or automatic. When new tarballs are released, users download them and run the appropriate installer. This prevents unexpected changes and keeps the system stable.
+
+---
 
 ## Roadmap Summary
 
-After hardware arrives, the following will be added:
+After hardware arrives, the following components will be added:
 
 - Enterprise tarball  
 - Model tarball suite  
@@ -81,5 +115,7 @@ After hardware arrives, the following will be added:
 - Update installer  
 
 Documentation for these components already exists. Only the tarball URLs will need to be added.
+
+---
 
 {% include footer.html %}
