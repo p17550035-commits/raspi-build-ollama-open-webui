@@ -2,7 +2,7 @@
 layout: default
 title: Systems
 ---
-{% toc %}
+
 
 # System Architecture 🏗️  
 This page explains how every part of your Raspberry Pi AI stack works together — Ollama, Open WebUI, Docker services, databases, storage, and the full enterprise layout.
