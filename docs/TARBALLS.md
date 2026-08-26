@@ -3,15 +3,38 @@ layout: default
 title: Tarballs
 ---
 
-
 # Tarball System 📦  
-This page explains how the Pi Edition tarball works, how to extract it, where everything goes, and how the patched environment enables Open WebUI to run on Raspberry Pi without Node, npm, or frontend builds.
+This page explains how the Pi Edition tarball system works, how to extract each tarball, where everything goes, and how the patched environments enable Open WebUI to run on Raspberry Pi without Node, npm, or frontend builds.  
+It also covers the Docker ARM64 tarball, Smart Installer integration, and future enterprise tarballs.
 
 ---
 
-## 📁 1. Tarball Contents
+# 📁 1. Tarball Types
 
-The Pi Edition tarball contains a fully prebuilt, Pi‑optimized Open WebUI distribution:
+The Pi Edition currently provides **two official tarballs**:
+
+### ✔️ Venv Edition (Pi Edition)
+```
+openwebui-pi-edition.tar.gz
+```
+
+### ✔️ Docker ARM64 Edition
+```
+openwebui-arm64.tar
+```
+
+Both are fully offline, prebuilt, and optimized for Raspberry Pi 4/5.
+
+Future tarballs will include:
+
+- Enterprise stack tarball  
+- Model tarball suite  
+- System service tarball  
+- Upgrade tarballs  
+
+---
+
+# 🧩 2. Venv Edition Tarball Contents
 
 ```
 open-webui/
@@ -27,13 +50,13 @@ open-webui/
 - **No frontend compilation**  
 - **No GPU dependencies**  
 - **No cloud services**  
-- **Everything runs locally on the Pi**  
+- Fully prebuilt, fully offline.
 
 This tarball is designed for **speed**, **stability**, and **zero frustration**.
 
 ---
 
-## 📦 2. Extracting the Tarball
+# 📦 3. Extracting the Venv Tarball
 
 Place the tarball in your home directory, then extract:
 
@@ -55,9 +78,7 @@ Inside you will find:
 
 ---
 
-## 🚀 3. Starting the Backend
-
-Activate the virtual environment and start Open WebUI:
+# 🚀 4. Starting the Venv Backend
 
 ```bash
 cd ~/open-webui/backend
@@ -79,27 +100,72 @@ http://<pi-ip>:8080
 
 ---
 
-## 🧩 4. Patched Dependencies (ARM‑Safe)
+# 🐳 5. Docker ARM64 Tarball
 
-The Pi Edition includes:
+The Docker Edition tarball contains a **prebuilt ARM64 Docker image**:
 
-### ✔️ Prebuilt Python wheels  
-No compiling heavy packages on the Pi.
+```
+openwebui-arm64.tar
+```
 
-### ✔️ ARM‑safe replacements  
-Packages that normally fail on ARM are patched or swapped.
+This tarball is used by:
 
-### ✔️ Prebuilt frontend  
-The entire UI is already compiled — no Node, no npm, no RAM explosions.
+- The Smart Installer  
+- Manual Docker deployments  
+- Offline installations  
+- Enterprise stack setups  
 
-### ✔️ Stable environment  
-Everything is tested on Raspberry Pi 4/5.
+### Load the image:
 
-This is why the Pi Edition works even when the official Open WebUI build fails on ARM.
+```bash
+sudo docker load -i openwebui-arm64.tar
+```
+
+### Run the container:
+
+```bash
+sudo docker run -d \
+  --name openwebui \
+  -p 8000:8080 \
+  -v openwebui:/app/backend/data \
+  openwebui-arm64:latest
+```
+
+Open:
+
+```
+http://<pi-ip>:8000
+```
 
 ---
 
-## 📁 5. GGUF Model Storage (Backend Models)
+# 🔐 6. Tarball Verification (Smart Installer)
+
+The Smart Installer automatically:
+
+- Validates tarball integrity  
+- Checks SHA‑256 checksum  
+- Detects corruption  
+- Prompts before overwriting  
+- Loads Docker images safely  
+- Repairs missing/corrupted folders  
+- Handles external‑drive detection  
+
+Current Docker tarball checksum:
+
+```
+7f5666a0815ad1ce374ffa28d417538d2d484bb319c7767c7ea35913a5d3ae0e
+```
+
+Current Venv tarball checksum:
+
+```
+a5b0574c14bc6645c9a040fc955a1d27ab47181f6532cf802f1f880aa5fde197
+```
+
+---
+
+# 📁 7. GGUF Model Storage (Backend Models)
 
 If you use Open WebUI’s GGUF backend, place models here:
 
@@ -119,14 +185,20 @@ Open WebUI automatically detects GGUF models placed in these directories.
 
 ---
 
-## 🔄 6. Updating the Tarball (Future Versions)
+# 🔄 8. Updating Tarballs (Future Versions)
 
-When a new Pi Edition tarball is released:
+When a new tarball is released:
 
+### Venv Edition:
 1. Stop Open WebUI  
 2. Replace the tarball  
 3. Extract again  
 4. Restart backend  
+
+### Docker Edition:
+1. Stop container  
+2. Load new tarball  
+3. Restart container  
 
 Your data (agents, workflows, settings) lives in:
 
@@ -138,7 +210,7 @@ So updates do **not** erase your content.
 
 ---
 
-## 🛠️ 7. Troubleshooting Tarball Issues
+# 🛠️ 9. Troubleshooting Tarball Issues
 
 ### ❗ Missing frontend  
 Ensure:
@@ -157,6 +229,13 @@ source .venv/bin/activate
 pip install --upgrade pip
 ```
 
+### ❗ Docker image not loading  
+Verify checksum:
+
+```bash
+sha256sum openwebui-arm64.tar
+```
+
 ### ❗ Ollama not detected  
 Confirm service is running:
 
@@ -169,9 +248,9 @@ Check model directory path.
 
 ---
 
-## 🎉 Final Notes
+# 🎉 Final Notes
 
-The Pi Edition tarball is the **heart** of the Raspberry Pi AI stack:
+The Pi Edition tarball system is the **heart** of the Raspberry Pi AI stack:
 
 - Fully prebuilt  
 - ARM‑optimized  
@@ -179,7 +258,7 @@ The Pi Edition tarball is the **heart** of the Raspberry Pi AI stack:
 - Zero cloud  
 - Zero headaches  
 
-Just extract → activate → run.
+Just extract → validate → run.
 
 Your Raspberry Pi becomes a **real AI workstation**, offline and fully yours.
 
