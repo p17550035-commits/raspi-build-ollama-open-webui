@@ -3,11 +3,9 @@ layout: default
 title: Roadmap
 ---
 
-
-
 # Project Roadmap
 
-This roadmap outlines the planned development phases for the Pi Edition. It covers upcoming tarballs, installers, enterprise services, and long-term expansion goals. All items listed here are supported by the existing documentation and will be activated once the required hardware and tarballs are available.
+This roadmap outlines the planned development phases for the Pi Edition. It covers completed milestones, upcoming tarballs, installers, enterprise services, and long‑term expansion goals. All items listed here are supported by the existing documentation and will be activated once the required hardware and tarballs are available.
 
 ---
 
@@ -15,15 +13,19 @@ This roadmap outlines the planned development phases for the Pi Edition. It cove
 
 The following components are complete:
 
-- Open WebUI tarball  
-- Basic installer  
-- External drive deployment  
-- Folder structure  
+- Open WebUI Pi Edition tarball  
+- Open WebUI Docker ARM64 tarball  
+- Smart Installer (install + repair + health‑check)  
+- External‑drive detection + SD fallback  
+- Folder structure + storage architecture  
 - Documentation suite  
-- Architecture design  
+- Architecture diagrams  
+- Systems diagrams  
 - Model compatibility framework  
 - Tarball workflow  
 - Manual update system  
+- Installer Specification page  
+- Updated README + Installers + Homepage  
 
 The system is ready for expansion once additional hardware arrives.
 
@@ -34,11 +36,12 @@ The system is ready for expansion once additional hardware arrives.
 These tarballs will be created and added to the release system:
 
 1. Enterprise service tarball  
-2. Model installer tarball set  
+2. Model tarball suite (GGUF + Ollama)  
 3. System service tarball  
 4. Upgrade tarball for future versions  
+5. Optional reverse‑proxy tarball (NGINX / Caddy)  
 
-Each tarball will follow the same structure as the existing Open WebUI tarball, including checksum verification and external-drive-safe extraction.
+Each tarball will follow the same structure as the existing tarballs, including checksum verification and external‑drive‑safe extraction.
 
 ---
 
@@ -49,8 +52,16 @@ The installer system will expand to include:
 1. Enterprise installer  
 2. Model installer  
 3. Update installer  
+4. Service‑specific installers (Qdrant, MinIO, Gitea, etc.)  
+5. Tarball‑based upgrade installer  
 
-These installers will integrate with the existing folder structure and tarball workflow. They will be modular and follow the same safety rules as the basic installer.
+All installers will integrate with the Smart Installer’s safety rules:
+
+- No silent overwrites  
+- No silent destructive actions  
+- Full folder health‑check  
+- External‑drive awareness  
+- Checksum validation  
 
 ---
 
@@ -66,7 +77,8 @@ The enterprise stack will include:
 - Docker Compose  
 - Systemd service files  
 
-Documentation for these services already exists in the architecture and systems pages. They will be activated once the enterprise tarball is created.
+Documentation for these services already exists in the architecture and systems pages.  
+They will be activated once the enterprise tarball is created.
 
 ---
 
@@ -79,29 +91,40 @@ The model system will include:
 - Model folder structure  
 - Compatibility tables  
 - Runtime configuration  
+- GGUF + Ollama integration  
 
-The model compatibility page is already prepared. Only the tarball URLs and installer script need to be added.
+The model compatibility page is already prepared.  
+Only tarball URLs and installer scripts need to be added.
 
 ---
 
 ## Update Workflow
 
-The update workflow will remain manual. Users will download new tarballs and run the update installer. This prevents unexpected changes and keeps the system stable.
+The update workflow will remain manual:
+
+- Users download new tarballs  
+- Run the update installer  
+- Smart Installer validates checksums  
+- Backend or Docker image is replaced safely  
+
+This prevents unexpected changes and keeps the system stable.
 
 ---
 
-## Long-Term Goals
+## Long‑Term Goals
 
-The long-term plan includes:
+The long‑term plan includes:
 
 - Full enterprise deployment  
-- Local Git hosting  
-- Local S3 storage  
-- Vector memory integration  
+- Local Git hosting (Gitea)  
+- Local S3 storage (MinIO)  
+- Vector memory integration (Qdrant)  
 - Workflow automation  
 - Offline AI cloud environment  
 - Additional model support  
 - Optional reverse proxy configuration  
+- Automated backup + restore system  
+- Tarball‑based versioning system  
 
 These goals align with the architecture design and will be implemented as hardware and tarballs become available.
 
