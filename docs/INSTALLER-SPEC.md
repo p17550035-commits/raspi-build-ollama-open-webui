@@ -1,3 +1,8 @@
+---
+layout: default
+title: Architecture
+---
+
 # Raspi Build — Installer Specification (Pi Edition)
 
 This document defines the complete behavior of the installer system used in the Raspi Build — Ollama + Open WebUI (Pi Edition) project.
@@ -309,3 +314,4 @@ Other docs (README, index.html, INSTALLERS.md) should link to this file.
 ------------------------------------------------------------
 End of Specification
 ------------------------------------------------------------
+{% include footer.html %}
