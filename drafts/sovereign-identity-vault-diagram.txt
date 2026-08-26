@@ -1,0 +1,68 @@
+============================================================
+SOVEREIGN IDENTITY & VAULT SYSTEM — ASCII DIAGRAM (DRAFT)
+============================================================
+
+                +-----------------------------+
+                |     Physical Presence       |
+                |  (Encrypted Drive + FIDO2)  |
+                +--------------+--------------+
+                               |
+                               v
+                +-----------------------------+
+                |        Identity Layer       |
+                |  identity.json + metadata   |
+                +--------------+--------------+
+                               |
+                               v
+                +-----------------------------+
+                |         Vault Layer         |
+                |   vault.json + encrypted    |
+                |   blobs/configs/models      |
+                +--------------+--------------+
+                               |
+                               v
+                +-----------------------------+
+                |     Encrypted Repo Layer    |
+                |   manifests + metadata      |
+                |   versioned encrypted data  |
+                +--------------+--------------+
+                               |
+                               v
+                +-----------------------------+
+                |      Application Layer      |
+                |  (Open WebUI, Gitea, etc.)  |
+                |   encrypted-only access     |
+                +--------------+--------------+
+                               |
+                               v
+                +-----------------------------+
+                |       Safezone Sandbox      |
+                |  memory-only decryption     |
+                |  zero-disk-write policies   |
+                +--------------+--------------+
+                               |
+                               v
+                +-----------------------------+
+                |       Wizard Stack          |
+                |  identity-aware workflows   |
+                |  vault-aware automation     |
+                +-----------------------------+
+
+============================================================
+UNPLUGGING THE ENCRYPTED DRIVE
+============================================================
+
+                [Encrypted Drive Removed]
+                               |
+                               v
+                +-----------------------------+
+                |       Pi Safe State         |
+                |  No identities loaded       |
+                |  No vaults mounted          |
+                |  No repos accessible        |
+                |  No decrypted data exists   |
+                +-----------------------------+
+
+============================================================
+END OF DIAGRAM
+============================================================
