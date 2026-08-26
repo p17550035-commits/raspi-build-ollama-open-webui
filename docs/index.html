@@ -30,9 +30,9 @@
   <main>
     <h1>Raspi Build — Ollama + Open WebUI (Pi Edition)</h1>
 
-    <p>This documentation site provides the complete reference for the Raspberry Pi AI stack known as the Pi Edition. It explains the installers, tarball system, architecture, services, models, update workflow, and long-term expansion plan.</p>
+    <p>This documentation site provides the complete reference for the Raspberry Pi AI stack known as the Pi Edition. It explains the installers, tarball system, Docker Edition, Smart Installer, architecture, services, models, update workflow, and long-term expansion plan.</p>
 
-    <p>The Pi Edition is designed to be stable, offline, modular, and fully driven by tarballs instead of package managers. Everything installs onto an external drive for reliability and performance.</p>
+    <p>The Pi Edition is designed to be stable, offline, modular, and fully driven by tarballs and prebuilt Docker images. Everything installs onto an external drive for reliability and performance, with automatic fallback to SD card when needed.</p>
 
     <hr>
 
@@ -41,9 +41,11 @@
     <p>The Pi Edition provides a complete AI environment for Raspberry Pi. It includes:</p>
 
     <ul>
-      <li>Open WebUI extracted from Docker and packaged as a tarball</li>
-      <li>Ollama for running GGUF models locally</li>
-      <li>A modular installer system</li>
+      <li>Open WebUI — Pi Edition (prebuilt venv + frontend)</li>
+      <li>Open WebUI — Docker ARM64 Edition (prebuilt image)</li>
+      <li>Ollama for running GGUF and LLM models locally</li>
+      <li>A modular installer system (core, components, models, upgrades)</li>
+      <li>Smart Installer with repair + health-check logic</li>
       <li>External-drive-safe deployment</li>
       <li>Enterprise architecture support</li>
       <li>A manual update system</li>
@@ -60,6 +62,7 @@
     <ul>
       <li>README.html — General overview</li>
       <li>INSTALLERS.html — All installer scripts</li>
+      <li>INSTALLER-SPEC.html — Smart Installer specification</li>
       <li>ARCHITECTURE.html — Enterprise system design</li>
       <li>TARBALLS.html — Tarball workflow and release structure</li>
       <li>MODELS.html — Model installer documentation</li>
@@ -72,21 +75,26 @@
 
     <h2>Deployment Method</h2>
 
-    <p>The Pi Edition installs directly onto an external drive. The installers handle:</p>
+    <p>The Pi Edition installs directly onto an external drive when available. The Smart Installer handles:</p>
 
     <ul>
       <li>Drive detection</li>
       <li>Mounting</li>
       <li>Folder creation</li>
-      <li>Tarball download</li>
-      <li>SHA256 verification</li>
-      <li>Extraction</li>
-      <li>Service setup (future)</li>
+      <li>Corruption detection</li>
+      <li>Repair logic</li>
+      <li>Tarball validation</li>
+      <li>Docker image loading</li>
+      <li>Safe-mode overwrite protection</li>
     </ul>
 
     <p>All components live under:</p>
 
     <pre>/mnt/pidrive/stack/</pre>
+
+    <p>Fallback storage:</p>
+
+    <pre>~/pistack/stack/</pre>
 
     <hr>
 
@@ -111,9 +119,16 @@ docker-compose.yml
 
     <h2>Tarball System</h2>
 
-    <p>The Pi Edition uses tarballs instead of package managers to avoid dependency issues and ensure predictable installations. Tarballs contain prebuilt components that extract directly into the stack directory.</p>
+    <p>The Pi Edition uses tarballs and prebuilt Docker images to avoid dependency issues and ensure predictable installations. Tarballs contain prebuilt components that extract directly into the stack directory.</p>
 
-    <p>The current UI/backend tarball uses the following SHA256 checksum:</p>
+    <p>Current tarballs:</p>
+
+    <pre>
+openwebui-pi-edition.tar.gz
+openwebui-arm64.tar
+    </pre>
+
+    <p>SHA256 checksum (UI/backend tarball):</p>
 
     <pre>a5b0574c14bc6645c9a040fc955a1d27ab47181f6532cf802f1f880aa5fde197</pre>
 
@@ -121,7 +136,7 @@ docker-compose.yml
 
     <h2>Update Philosophy</h2>
 
-    <p>Updates are manual and user-controlled. Nothing is forced or automatic. When new tarballs are released, users download them and run the appropriate installer. This prevents unexpected changes and keeps the system stable.</p>
+    <p>Updates are manual and user-controlled. Nothing is forced or automatic. When new tarballs or Docker images are released, users download them and run the appropriate installer. This prevents unexpected changes and keeps the system stable.</p>
 
     <hr>
 
