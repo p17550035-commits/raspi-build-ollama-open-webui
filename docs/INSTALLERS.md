@@ -3,10 +3,9 @@ layout: default
 title: Installers
 ---
 
-
 # Installer Suite 📦  
 A complete, enterprise‑grade installation guide for the entire Raspberry Pi AI stack.  
-This page merges everything from PI_SETUP.md + the Docker upgrade plan + the enterprise blueprint into one unified installer reference.
+This page provides unified documentation for the Venv Edition, Docker Edition, Smart Installer, Tarball system, and future enterprise installers.
 
 ---
 
@@ -41,17 +40,72 @@ After reboot:
 
 ```bash
 docker --version
+docker compose version
 ```
 
-Create stack folder:
+---
+
+# 📁 3. Storage Setup (External Drive + SD Fallback)
+
+Preferred storage root:
+
+```
+# /mnt/pidrive/stack/
+```
+
+Fallback (if no external drive):
+
+```
+# ~/pistack/stack/
+```
+
+Create the folder manually if needed:
 
 ```bash
 mkdir -p /mnt/pidrive/stack
 ```
 
+The **Smart Installer** will automatically detect:
+
+- External drives  
+- Filesystem type  
+- Mount status  
+- Corruption  
+- Missing folders  
+- Permission issues  
+
+And will prompt before creating, repairing, or overwriting anything.
+
 ---
 
-# 🐮 3. Install Ollama (ARM Build)
+# 🧠 4. Smart Installer (Install + Repair + Health‑Check)
+
+Main installer:
+
+```
+# scripts/core/install-upgrade-docker.sh
+```
+
+Capabilities:
+
+- Detect external drive  
+- Fall back to SD card  
+- Validate folder structure  
+- Detect corrupted folders  
+- Repair permissions  
+- Offer overwrite / repair / skip options  
+- Validate Docker tarball via SHA‑256  
+- Load Docker image  
+- Run Open WebUI container  
+- Install Docker + Compose (if missing)  
+- Provide full health‑check mode  
+- Never overwrite anything without explicit confirmation  
+
+This is the **recommended installer** for most users.
+
+---
+
+# 🐮 5. Install Ollama (ARM Build)
 
 ```bash
 curl -fsSL https://ollama.com/install.sh | sh
@@ -69,9 +123,9 @@ ollama pull mistral:7b
 
 ---
 
-# 📦 4. Extract Open WebUI Pi Edition
+# 📦 6. Open WebUI — Venv Edition (Tarball)
 
-Place your tarball in your home directory:
+Extract:
 
 ```bash
 tar -xzvf openwebui-pi-edition.tar.gz -C ~/
@@ -80,17 +134,13 @@ tar -xzvf openwebui-pi-edition.tar.gz -C ~/
 Creates:
 
 ```
-~/open-webui/
+open-webui/
   backend/      # Python backend + venv
   build/        # Prebuilt production frontend
   patched/      # ARM-safe dependency patches
 ```
 
-Zero Node. Zero npm. Zero compilation.
-
----
-
-# 🚀 5. Start Open WebUI Backend
+Start:
 
 ```bash
 cd ~/open-webui/backend
@@ -98,17 +148,7 @@ source .venv/bin/activate
 bash start.sh
 ```
 
-Expected logs:
-
-- Started server process  
-- Scheduler worker started  
-- v0.11.x banner  
-
----
-
-# 🌐 6. Access Open WebUI
-
-Open in browser:
+Open:
 
 ```
 http://<pi-ip>:8080
@@ -116,18 +156,48 @@ http://<pi-ip>:8080
 
 ---
 
-# 🔌 7. Connect Ollama to Open WebUI
+# 🐳 7. Open WebUI — Docker Edition (Tarball)
+
+Download + validate + load:
+
+```bash
+curl -L https://github.com/p17550035-commits/raspi-build-ollama-open-webui/releases/download/v1.1-arm64/openwebui-arm64.tar -o openwebui-arm64.tar
+sha256sum openwebui-arm64.tar
+sudo docker load -i openwebui-arm64.tar
+```
+
+Run:
+
+```bash
+sudo docker run -d \
+  --name openwebui \
+  -p 8000:8080 \
+  -v openwebui:/app/backend/data \
+  openwebui-arm64:latest
+```
+
+Open:
+
+```
+http://<pi-ip>:8000
+```
+
+---
+
+# 🔌 8. Connect Ollama to Open WebUI
 
 Inside Open WebUI:
 
 1. Settings → Models  
 2. Add endpoint:  
-   `http://localhost:11434`  
-3. Qwen / LLaMA / Phi models appear automatically.
+   ```
+   http://localhost:11434
+   ```
+3. Models appear automatically.
 
 ---
 
-# 🛠️ 8. Systemd Autostart (Optional)
+# 🛠️ 9. Systemd Autostart (Optional)
 
 Create:
 
@@ -162,9 +232,15 @@ sudo systemctl start openwebui
 
 ---
 
-# 🏢 9. Enterprise Stack Installers (Docker Services)
+# 🏢 10. Enterprise Stack Installers (Docker Services)
 
-These installers live in `/scripts/components/`:
+These installers live in:
+
+```
+scripts/components/
+```
+
+Installers include:
 
 - install-postgres.sh  
 - install-redis.sh  
@@ -186,7 +262,7 @@ Each installer:
 
 ---
 
-# 🧱 10. Docker Compose (Full Enterprise Stack)
+# 🧱 11. Docker Compose (Full Enterprise Stack)
 
 Create:
 
@@ -286,7 +362,7 @@ docker ps
 
 ---
 
-# 🔍 11. Access Points
+# 🔍 12. Access Points
 
 - Open WebUI → `http://<pi-ip>:8080`  
 - Gitea → `http://<pi-ip>:3000`  
@@ -297,7 +373,7 @@ docker ps
 
 ---
 
-# ✔️ 12. First‑Things‑To‑Test Checklist
+# ✔️ 13. First‑Things‑To‑Test Checklist
 
 1. Open WebUI loads  
 2. Gitea loads  
@@ -314,7 +390,7 @@ docker ps
 
 ---
 
-# 🔄 13. Upgrade Paths
+# 🔄 14. Upgrade Paths
 
 Docker Compose upgrade:
 
@@ -334,7 +410,7 @@ scripts/models/
 
 ---
 
-# 🧩 14. Troubleshooting
+# 🧩 15. Troubleshooting
 
 - PyTorch not found → normal on Pi  
 - CORS warnings → safe  
@@ -342,10 +418,11 @@ scripts/models/
 - Missing frontend → ensure `~/open-webui/build` exists  
 - Ollama not detected → check service  
 - Models missing → check external drive mount  
+- Docker image not loading → verify SHA‑256 checksum  
 
 ---
 
-# 🎉 15. Final Result
+# 🎉 16. Final Result
 
 You now have:
 
