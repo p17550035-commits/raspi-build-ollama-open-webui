@@ -188,7 +188,138 @@ This protects:
 
 ---
 
-# 8. Purpose of This File
+## 8. Sovereign Dev Stacks — Personal AI Cloud & Identity-Bound Creation
+
+Layer 1 must integrate with the user’s **personal sovereign dev stack**, which acts as a siloed, federated, offline/online-capable AI cloud and GitHub replacement. This is the “flip side” of the sovereign internet — the personal universe each user controls.
+
+### 8.1 Purpose of Sovereign Dev Stacks
+Sovereign dev stacks provide:
+
+- A personal AI cloud  
+- Offline-first development  
+- Encrypted local storage  
+- Identity-bound build pipelines  
+- Artifact creation (apps, sites, APIs, pages)  
+- Personal domain management  
+- Private sovereign cloud backup options  
+- Optional public publishing to the sovereign internet  
+
+They are **fully siloed**, **fully encrypted**, and **fully sovereign**.
+
+### 8.2 Pairing with Zero Layer Nodes
+To unlock cloud backup, public indexing, or full ecosystem participation, the user must pair:
+
+- Their **Zero Layer node**  
+- Their **identity keys**  
+- Their **sovereign dev stack**  
+- Their **browser** (higher layer)
+
+This pairing is enforced by the kernel and determines the user’s capability level.
+
+### 8.3 Capability Levels (Opt-In)
+Users choose how deeply they participate:
+
+1. **Local-only dev stack**  
+   - No cloud  
+   - No public indexing  
+   - No ecosystem contribution  
+   - Full privacy
+
+2. **Identity-bound cloud backup**  
+   - Requires pairing with a Zero Layer node  
+   - Encrypted sovereign cloud storage  
+   - No public exposure
+
+3. **Public page indexing**  
+   - Requires proof-of-work  
+   - Requires identity-bound keys  
+   - Allows publishing public pages  
+   - Allows domain creation
+
+4. **Full ecosystem participation**  
+   - Browser-level integration  
+   - Domain creation  
+   - App publishing  
+   - Artifact contribution  
+   - Reward system activation  
+   - Ledger-bound identity  
+   - Mesh participation
+
+The kernel enforces these levels and ensures no one can bypass them.
+
+### 8.4 Proof-of-Work for Public Creation
+Creating anything public-facing requires **identity-bound proof-of-work**:
+
+- Domains  
+- Apps  
+- Websites  
+- Public pages  
+- Public APIs  
+- Public artifacts
+
+This prevents:
+
+- Bots mass-creating junk  
+- Rich actors spinning thousands of nodes  
+- Spammy or exploitative content  
+- Corporate or government capture  
+- Political manipulation  
+- Ledger pollution
+
+Only **real people with real identity and real effort** can create durable public artifacts.
+
+### 8.5 Browser Integration (Higher Layer)
+The sovereign browser becomes the user-friendly interface for:
+
+- Creating domains  
+- Publishing apps  
+- Managing public pages  
+- Opting content into indexing  
+- Viewing sovereign cloud backups  
+- Managing identity-bound artifacts  
+
+The kernel ensures:
+
+- Identity pairing  
+- Proof-of-work validation  
+- Permission enforcement  
+- Ledger consistency  
+- Domain registry integrity  
+
+### 8.6 Incentives & Rewards
+Running a healthy Zero Layer node provides:
+
+- Ledger replication rewards  
+- Mesh contribution rewards  
+- Sovereign cloud access  
+- Public publishing rights  
+- Artifact promotion rights  
+- Community benefit incentives  
+
+This encourages:
+
+- Real participation  
+- Real content creation  
+- Real ecosystem growth  
+- Real sovereignty
+
+### 8.7 Inverted Internet Model
+Sovereign dev stacks + sovereign internet create an inverted model:
+
+- Built by people  
+- Owned by people  
+- For real people  
+- Anti-corporate  
+- Anti-government  
+- Anti-political  
+- Anti-bot  
+- Anti-rich-node exploitation  
+
+The kernel is the enforcement engine for this inversion.
+
+---
+
+# 9. Purpose of This File
 
 This file is the anchor for Layer 1 — Kernel Deep Dive.  
 It captures the sovereign, immutable, proof‑of‑work, identity-bound, dev-stack-integrated nature of the kernel.  
