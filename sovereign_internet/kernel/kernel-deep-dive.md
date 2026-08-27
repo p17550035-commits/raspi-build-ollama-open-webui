@@ -1,11 +1,11 @@
 # Kernel Deep Dive — Layer 1
 Sovereign Internet Architecture  
-Version: 1.0.1  
+Version: 1.0.2  
 Last Updated: 2026‑08‑26
 
 Layer 1 defines the Kernel Layer — the “brainstem” of the Sovereign Internet.  
 It sits directly above Zero Layer (hardware) and Zero Layer 0.5 (bootstrap/nodes).  
-This is the layer where sovereignty, immutability, rules, governance, and reward logic are **locked into place** and inherited upward through all higher layers.
+This is where sovereignty, immutability, rules, governance, reward logic, proof‑of‑work, and identity‑bound creation are locked into place and inherited upward through all higher layers.
 
 ---
 
@@ -16,20 +16,21 @@ The Kernel Layer is responsible for:
 - Enforcing **immutable sovereignty rules**  
 - Embedding **freedom guarantees**  
 - Locking in **protocols and constraints**  
-- Defining **reward logic**  
+- Defining **reward and proof‑of‑work logic**  
 - Preventing **corruption, exploitation, and manipulation**  
 - Ensuring **deterministic behavior**  
 - Orchestrating all higher layers  
 - Maintaining **identity-bound trust**  
 - Protecting the network from **bots, corporations, governments, and political capture**  
 
-This layer is where the “soul” of the sovereign internet is encoded.
+This is where the “soul” of the sovereign internet is encoded.
 
 ---
 
-# 2. Sovereignty & Governance (Immutable Core)
+# 2. Sovereignty, Governance & Proof‑of‑Work
 
-The kernel embeds the foundational rules that **cannot be changed**, including:
+## 2.1 Immutable Core Rules
+The kernel embeds foundational rules that cannot be changed:
 
 - Sovereign freedom guarantees  
 - Anti-censorship constraints  
@@ -41,66 +42,99 @@ The kernel embeds the foundational rules that **cannot be changed**, including:
 - Community-owned governance  
 - Immutable cardinal rules  
 
-These rules are **cryptographically locked** and inherited upward through all layers.
+These rules are cryptographically locked and inherited upward through all layers.
 
-Higher layers may add flexibility, but **cannot violate the kernel’s sovereignty guarantees**.
+## 2.2 Proof‑of‑Work for Creation
 
----
+Creating **anything new** that affects the public sovereign space (e.g., domains, apps, public websites, public APIs) requires **proof‑of‑work tied to identity keys**:
 
-# 3. Immutable Protocols & Rule Enforcement
+- Identity-bound proof‑of‑work  
+- Hardware-bound proof‑of‑work (paired with the user’s own Zero Layer node)  
+- Effort-based validation before new public artifacts are accepted  
+- Tiered requirements based on user’s opted-in sovereign dev stack level  
 
-The kernel enforces:
+This prevents:
 
-- Immutable communication protocols  
-- Immutable ledger rules  
-- Immutable domain registry logic  
-- Immutable identity binding  
-- Immutable reward constraints  
-- Immutable mesh participation rules  
+- Bots mass‑creating junk domains  
+- Rich actors spinning countless unhealthy Layer 0 nodes  
+- Spammy or exploitative public artifacts flooding the network  
 
-These rules are encoded using:
-
-- Deterministic logic  
-- Cryptographic signatures  
-- Smart-contract-like constraints  
-- Append-only ledger behavior  
-- Block-based update cycles (24-hour block windows)  
-
-Nothing can be silently edited, removed, or overwritten.
+Only **real people with real identity and real effort** can create durable public artifacts.
 
 ---
 
-# 4. Reward System Logic (Anti-Exploitation)
+# 3. Sovereign Dev Stack & Inverted Internet
 
-The kernel defines the reward system and protects it from abuse:
+## 3.1 Personal Sovereign Dev Stack
 
-### 4.1 Anti-Bot Protections
-- Identity-bound node participation  
-- Hardware-bound identity  
-- Human verification layers  
-- Mesh behavior analysis  
-- Activity-pattern detection  
+Each user can run their own **sovereign dev stack**—the inverted version of the current internet:
 
-### 4.2 Anti-Rich-Node Exploitation
-- No advantage for spinning thousands of nodes  
-- Reward curves that flatten beyond healthy participation  
-- Penalties for artificial inflation  
-- Sovereign fairness constraints  
+- Personal cloud / dev environment  
+- Identity-bound build pipeline  
+- Local-first development  
+- Sovereign deployment rules  
 
-### 4.3 Healthy Node Incentives
-- Rewards for stability  
-- Rewards for uptime  
-- Rewards for ledger replication  
-- Rewards for mesh contribution  
-- Rewards for community benefit  
+The kernel must:
 
-The kernel ensures the network stays **for real people, built by people, owned by people**.
+- Pair the user’s **separate Zero Layer node + identity keys** with their **private dev stack**  
+- Enforce varying levels of trust and capability based on user opt-in  
+- Ensure that only identity-bound, proof‑of‑work-backed artifacts can be promoted to the public sovereign space  
+
+## 3.2 Inverted Internet Model
+
+Instead of:
+
+- Centralized platforms  
+- Corporate control  
+- Government surveillance  
+
+The sovereign internet is:
+
+- Built by people  
+- Owned by people  
+- For real people  
+- Anti-corporate  
+- Anti-government  
+- Anti-political capture  
+
+The kernel is the enforcement engine for this inversion.
+
+---
+
+# 4. Kernel ↔ Browser ↔ Higher Layers
+
+## 4.1 Kernel–Browser Pairing
+
+Many layers above, the **sovereign browser** becomes the user-friendly interface for:
+
+- Creating domains  
+- Publishing public pages  
+- Managing apps and sites  
+- Opting content into public indexing  
+
+The kernel must:
+
+- Pair with the browser at multiple levels  
+- Enforce identity-bound actions  
+- Validate proof‑of‑work before public creation  
+- Respect user’s sovereign dev stack configuration  
+
+## 4.2 Public Indexing & Opt-In
+
+Public-facing pages and domains are:
+
+- Created from the user’s sovereign dev stack  
+- Bound to identity and proof‑of‑work  
+- Explicitly opted in for indexing  
+- Governed by kernel rules and lower layers (0–1+)  
+
+No silent indexing. No forced exposure. No centralized control.
 
 ---
 
 # 5. Blockchain-Like Behavior (Layer 0 / Layer 1 Integration)
 
-While not a traditional blockchain, the kernel uses **blockchain-like properties** for the layers that must remain incorruptible:
+For layers that must remain incorruptible, the kernel uses blockchain-like properties:
 
 - Append-only ledger  
 - Immutable blocks  
@@ -110,7 +144,7 @@ While not a traditional blockchain, the kernel uses **blockchain-like properties
 - Transfer-of-ownership contracts  
 - No deletion or mutation outside strict conditions  
 
-This ensures:
+This protects:
 
 - Ledger integrity  
 - Domain registry integrity  
@@ -118,62 +152,25 @@ This ensures:
 - Rule integrity  
 - Communication integrity  
 
-The kernel is the guardian of these properties.
-
 ---
 
 # 6. Kernel Responsibilities (Technical)
 
-### 6.1 Initialization
-Loads identity, state, ledger, mesh, and sovereignty rules.
+- Initialization  
+- State management  
+- Task routing  
+- Layer orchestration  
+- Deterministic execution loop  
+- Error handling  
+- Introspection  
+- Safety constraints  
+- Recovery hooks  
 
-### 6.2 State Management
-Tracks node status, ledger sync, mesh health, errors, and recovery flags.
-
-### 6.3 Task Routing
-Routes tasks deterministically to layers, agents, or subsystems.
-
-### 6.4 Layer Orchestration
-Controls the execution order of all layers.
-
-### 6.5 Deterministic Execution Loop
-Processes events, updates state, handles errors, logs introspection.
-
-### 6.6 Error Handling
-Enforces sovereign-safe behavior with no undefined states.
-
-### 6.7 Introspection
-Provides logs, metrics, snapshots, and execution traces.
-
-### 6.8 Safety Constraints
-Protects identity, ledger, mesh, and sovereignty guarantees.
-
-### 6.9 Recovery Hooks
-Integrates with Zero Layer recovery logic.
+(As previously defined; this section will be expanded in dedicated kernel documents.)
 
 ---
 
-# 7. Kernel Structure (High-Level)
-
-### 7.1 Core Components
-- Kernel class  
-- State dictionary  
-- Task router  
-- Execution loop  
-- Error handler  
-- Introspection module  
-- Layer orchestrator  
-- Messaging bus  
-
-### 7.2 Internal Messaging Model
-Zero-trust, identity-bound, deterministic routing.
-
-### 7.3 Call Graph
-Kernel → Layer → Agent → Task
-
----
-
-# 8. Planned Kernel Documents
+# 7. Planned Kernel Documents
 
 - kernel-architecture.md  
 - kernel-execution-model.md  
@@ -191,8 +188,8 @@ Kernel → Layer → Agent → Task
 
 ---
 
-# 9. Purpose of This File
+# 8. Purpose of This File
 
 This file is the anchor for Layer 1 — Kernel Deep Dive.  
-It defines the philosophical, sovereign, and technical foundation for the kernel layer.  
+It captures the sovereign, immutable, proof‑of‑work, identity-bound, dev-stack-integrated nature of the kernel.  
 It will be used to generate the unified page for DOCX/PDF export and serve as the restore point for this chat thread.
