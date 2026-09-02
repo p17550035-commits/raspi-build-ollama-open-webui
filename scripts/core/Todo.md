@@ -1,0 +1,1 @@
+ToDo: The sovereign updated installer script draft must be compared to original docker smart script and merge all original smart logic back into this newer safer more user friendly version of the installer script, and then all future installers should be based off this or similar updated safety script
